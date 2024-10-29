@@ -4,13 +4,15 @@ function CadastroLivro({ adicionarLivro }) {
   const [titulo, setTitulo] = useState("");
   const [autor, setAutor] = useState("");
   const [isbn, setIsbn] = useState("");
+  const [quantidade, setQuantidade] = useState(1);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    adicionarLivro({ titulo, autor, isbn });
+    adicionarLivro({ titulo, autor, isbn, quantidade: parseInt(quantidade) });
     setTitulo("");
     setAutor("");
     setIsbn("");
+    setQuantidade(1);
   };
 
   return (
@@ -36,6 +38,15 @@ function CadastroLivro({ adicionarLivro }) {
         value={isbn}
         onChange={(e) => setIsbn(e.target.value)}
         required
+      />
+      <input
+        type="number"
+        placeholder="Quantidade"
+        value={quantidade}
+        onChange={(e) => setQuantidade(e.target.value)}
+        min="1"
+        required
+        className="input-quantidade" // Adiciona uma classe para estilização
       />
       <button type="submit">Cadastrar</button>
     </form>

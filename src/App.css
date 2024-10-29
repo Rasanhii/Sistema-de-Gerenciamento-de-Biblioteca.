@@ -130,3 +130,22 @@ li {
 .mensagem-persistente.erro {
   color: #fdcfcf;
 }
+
+
+.input-quantidade {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #555;
+  background-color: #3e3e4f;
+  color: #f4f4f9;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+.input-quantidade::-webkit-inner-spin-button,
+.input-quantidade::-webkit-outer-spin-button {
+  margin: 0;
+}

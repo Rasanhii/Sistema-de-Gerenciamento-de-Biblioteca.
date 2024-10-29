@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function ConsultaLivros({ livros }) {
+function ConsultaLivros({ livros, excluirLivro }) {
   const [termoBusca, setTermoBusca] = useState("");
 
   const livrosFiltrados = livros.filter(
@@ -22,7 +22,8 @@ function ConsultaLivros({ livros }) {
         {livrosFiltrados.map((livro) => (
           <li key={livro.isbn}>
             {livro.titulo} - {livro.autor} (ISBN: {livro.isbn}){" "}
-            {livro.emprestado ? `Emprestado para ${livro.emprestado}` : "Disponível"}
+            {livro.emprestado < livro.quantidade ? "Disponível" : "Indisponível"} 
+            - {livro.emprestado}/{livro.quantidade} emprestados
           </li>
         ))}
       </ul>
