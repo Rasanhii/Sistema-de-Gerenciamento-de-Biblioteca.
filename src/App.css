@@ -78,3 +78,55 @@ li {
   border-radius: 10px;
   border: 1px solid #555; /* Borda mais escura */
 }
+
+/* Balão de mensagem genérico */
+.mensagem-balao {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-width: 300px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  font-size: 1.1rem; /* Fonte ligeiramente maior */
+  animation: fadeInOut 5s ease forwards;
+  z-index: 1000;
+  pointer-events: none; /* Previne que o balão afete o layout */
+}
+
+/* Balão de sucesso */
+.mensagem-balao.sucesso {
+  background-color: #4CAF50;
+  color: #fff;
+}
+
+/* Balão de erro */
+.mensagem-balao.erro {
+  background-color: #ff4d4d; /* Vermelho para erros */
+  color: #fff;
+}
+
+/* Animação para o balão */
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(10px); }
+  10%, 90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(10px); }
+}
+
+/* Estilo para a mensagem persistente */
+.mensagem-persistente {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* Mensagem de sucesso */
+.mensagem-persistente.sucesso {
+  color: #c7f3c8;
+}
+
+/* Mensagem de erro */
+.mensagem-persistente.erro {
+  color: #fdcfcf;
+}
