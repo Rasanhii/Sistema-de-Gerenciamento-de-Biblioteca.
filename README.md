@@ -94,3 +94,32 @@ class BibliotecaController:
 ![diagrama2](https://github.com/user-attachments/assets/a36e2c46-bc8c-4831-9afe-0542d14d44f1)
 
 
+```UML
+@startuml
+title Diagrama de Sequência - Sistema de Biblioteca
+
+actor Usuario
+
+Usuario -> BibliotecaView: Solicita cadastro de livro
+BibliotecaView -> BibliotecaController: cadastrar_livro(titulo, autor, isbn)
+BibliotecaController -> Livro: Cria instância de Livro
+BibliotecaController -> livros: Adiciona o livro na lista
+
+Usuario -> BibliotecaView: Solicita consulta de livros
+BibliotecaView -> BibliotecaController: consultar_livros(termo_busca)
+BibliotecaController -> livros: Filtra livros por título/autor
+BibliotecaController --> BibliotecaView: Retorna lista de livros
+
+Usuario -> BibliotecaView: Solicita empréstimo de livro
+BibliotecaView -> BibliotecaController: realizar_emprestimo(isbn, usuario)
+BibliotecaController -> livros: Verifica disponibilidade do livro
+BibliotecaController -> Emprestimo: Cria instância de Emprestimo
+BibliotecaController -> emprestimos: Adiciona o empréstimo na lista
+
+Usuario -> BibliotecaView: Solicita devolução de livro
+BibliotecaView -> BibliotecaController: realizar_devolucao(isbn)
+BibliotecaController -> livros: Atualiza status do livro para "disponível"
+BibliotecaController -> emprestimos: Remove registro do empréstimo
+
+@enduml
+```
