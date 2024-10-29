@@ -2,9 +2,15 @@
 
 ![biblioteca](https://github.com/user-attachments/assets/2aafe9bc-0b67-4db4-9f1b-64c01cb3bf4a)
 
+## Sumário
+1. [Estrutura da Aplicação com Padrão MVC](#1-estrutura-da-aplicação-com-padrão-mvc)
+2. [Definição das Classes do Modelo, Visão e Controlador](#2-definição-das-classes-do-modelo-visão-e-controlador)
+3. [Fluxo de Eventos da Aplicação](#3-fluxo-de-eventos-da-aplicação)
+4. [Diagrama de Sequência UML (PlantText)](#4-diagrama-de-sequência-uml-planttext)
 
 
-**1. Estrutura da Aplicação com Padrão MVC**
+
+## 1. Estrutura da Aplicação com Padrão MVC
 
 No padrão MVC (Model-View-Controller):
 
@@ -12,7 +18,7 @@ No padrão MVC (Model-View-Controller):
 - View (Visão): Fornece a interface com o usuário, onde se insere informações e visualiza os resultados (no caso, simulada através de uma aplicação de linha de comando).
 - Controller (Controlador): Manipula a entrada do usuário e chama os métodos apropriados no modelo.
 
-**2. Definição das Classes do Modelo, Visão e Controlador**
+## 2. Definição das Classes do Modelo, Visão e Controlador
 
 Aqui está a definição das principais classes:
 
@@ -63,7 +69,7 @@ class BibliotecaController:
         return "Livro não encontrado ou não está emprestado."
 ```
 
-**3. Fluxo de Eventos da Aplicação**
+## 3. Fluxo de Eventos da Aplicação
 
 **Cadastro de Livro**
 
@@ -89,20 +95,22 @@ class BibliotecaController:
 2) A visão captura o ISBN e envia para o controlador.
 3) O controlador executa realizar_devolucao(), alterando o status do livro e removendo o empréstimo.
 
-**4. Diagrama de Sequência UML (PlantText)**
+## 4. Diagrama de Sequência UML (PlantText)
 
-![diagrama2](https://github.com/user-attachments/assets/a36e2c46-bc8c-4831-9afe-0542d14d44f1)
+
+![DiagramaUML](https://github.com/user-attachments/assets/9f4e83ee-f3ab-4886-8af6-9606a4951681)
 
 
 ```UML
 @startuml
+!theme black-knight
 title Diagrama de Sequência - Sistema de Biblioteca
 
 actor Usuario
 
 Usuario -> BibliotecaView: Solicita cadastro de livro
-BibliotecaView -> BibliotecaController: cadastrar_livro(titulo, autor, isbn)
-BibliotecaController -> Livro: Cria instância de Livro
+BibliotecaView -> BibliotecaController: cadastrar_livro(titulo, autor, isbn, quantidade)
+BibliotecaController -> Livro: Cria instância de Livro com quantidade
 BibliotecaController -> livros: Adiciona o livro na lista
 
 Usuario -> BibliotecaView: Solicita consulta de livros
@@ -121,5 +129,18 @@ BibliotecaView -> BibliotecaController: realizar_devolucao(isbn)
 BibliotecaController -> livros: Atualiza status do livro para "disponível"
 BibliotecaController -> emprestimos: Remove registro do empréstimo
 
+Usuario -> BibliotecaView: Solicita exclusão de livro
+BibliotecaView -> BibliotecaController: realizar_exclusao(isbn, quantidade)
+BibliotecaController -> livros: Encontra o livro por ISBN
+alt Se livro não encontrado
+    BibliotecaController --> BibliotecaView: Retorna mensagem "Livro não encontrado"
+else Se quantidade solicitada maior que a disponível
+    BibliotecaController --> BibliotecaView: Retorna mensagem "Quantidade de exclusão maior do que a disponível"
+else Se quantidade válida
+    BibliotecaController -> Livro: Atualiza a quantidade disponível
+    BibliotecaController --> BibliotecaView: Retorna mensagem de sucesso
+end
+
 @enduml
+
 ```
