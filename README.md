@@ -89,7 +89,7 @@ class BibliotecaController:
 2) A visão captura o ISBN e envia para o controlador.
 3) O controlador executa realizar_devolucao(), alterando o status do livro e removendo o empréstimo.
 
-**5. Diagrama de Sequência UML (PlantText)**
+**4. Diagrama de Sequência UML (PlantText)**
 
 ![diagrama2](https://github.com/user-attachments/assets/a36e2c46-bc8c-4831-9afe-0542d14d44f1)
 
