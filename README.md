@@ -91,5 +91,6 @@ class BibliotecaController:
 
 **5. Diagrama de Sequência UML (PlantText)**
 
-![diagrama]("public/diagrama2.png")
+![diagrama2](https://github.com/user-attachments/assets/a36e2c46-bc8c-4831-9afe-0542d14d44f1)
+
 
