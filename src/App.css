@@ -1,0 +1,80 @@
+/* src/App.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1e1e2f; /* Fundo escuro */
+  color: #f4f4f9; /* Texto claro */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+h1 {
+  color: #f4f4f9;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.container {
+  width: 90%;
+  max-width: 800px;
+  background-color: #2e2e3e; /* Fundo dos contêineres */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para formulários */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form h2 {
+  color: #dcdcdc;
+  margin-bottom: 10px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #555; /* Borda mais escura */
+  background-color: #3e3e4f; /* Fundo escuro para o input */
+  color: #f4f4f9;
+  border-radius: 5px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 20px; 
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #3e3e4f; /* Fundo escuro para os itens da lista */
+  color: #f4f4f9;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border: 1px solid #555; /* Borda mais escura */
+}
